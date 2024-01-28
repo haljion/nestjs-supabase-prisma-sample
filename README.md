@@ -28,3 +28,5 @@ npx prisma migrate dev --name init
 
 yarn nest g service users
 yarn add bcrypts
+
+curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore > .gitignore

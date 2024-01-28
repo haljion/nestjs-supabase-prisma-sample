@@ -5,7 +5,7 @@ async function bootstrap() {
   // NestFactoryでインスタンスを生成
   const app = await NestFactory.create(AppModule);
   // ポート番号指定
-  // envとかで設定したほうが良さそう
+  // TODO:envとかで設定したほうが良さそう
   await app.listen(process.env.PORT_NUMBER);
 }
 bootstrap();
