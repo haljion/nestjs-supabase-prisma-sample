@@ -2,31 +2,56 @@
 
 NestJS+Supabase+Prisma による API サーバーのサンプルアプリケーション
 
+# プロジェクト作成
+
+```zsh
 npx @nestjs/cli new my-nestjs-app
-$ cd my-nestjs-app
-$ yarn run start
+curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore > .gitignore
+```
 
+# 起動
+
+```zsh
+cd my-nestjs-app
 # コードの変更をウォッチ
+npm run start:dev
+```
 
-yarn run start:dev
-
+```zsh
 # .env に記述された環境変数を使用するためには、ConfigModule が必要
+npm i --save-dev @nestjs/config
+```
 
-npm install --save-dev @nestjs/config
+# prisma 環境構築
 
-yarn add prisma
+```zsh
+npm i prisma @prisma/client
 npx prisma init
+```
 
-## migrate
+## prisma migrate
+
+```zsh
+npx prisma migrate dev --name init
+```
 
 - migrations.sql が作成されたら成功
 - supabase 側にテーブルが作成される
 
-```
-npx prisma migrate dev --name init
+# サービスクラス等生成
+
+```zsh
+npm nest g service users
 ```
 
-yarn nest g service users
-yarn add bcrypts
+# 暗号化ライブラリ
 
-curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore > .gitignore
+```zsh
+npm i bcrypt
+```
+
+# JWTライブラリ
+
+```zsh
+npm i jsonwebtoken
+```

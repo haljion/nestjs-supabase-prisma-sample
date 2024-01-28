@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { PrismaService } from '../prisma.service';
 import { User, Prisma } from '@prisma/client';
 import { hash, compare } from 'bcrypt';
@@ -15,13 +19,13 @@ export class UsersService {
 
     // ユーザーが見つからなかった場合
     if (!user) {
-      throw new NotFoundException('User Not Found');
+      throw new NotFoundException('User not found.');
     }
 
     const isValid = await compare(data.password, user.password);
 
     if (!isValid) {
-      throw new NotFoundException('User Not Found');
+      throw new UnauthorizedException('isValid password.');
     }
 
     // JWTトークン発行
